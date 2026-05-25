@@ -1,0 +1,148 @@
+/**
+ * Morning Mode — Shared motion utilities (reveals + smooth scroll)
+ * Respects prefers-reduced-motion throughout.
+ * Depends on `:root` tokens from tokens.css — import tokens before this file (see globals.css).
+ */
+
+:root {
+  --mm-reveal-distance: var(--mm-space-4);
+  --mm-reveal-stagger-step: 80ms;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@keyframes mm-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--mm-reveal-distance));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mm-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--mm-reveal-distance)));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mm-scale-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--mm-reveal-distance)) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Scroll-driven reveal (paired with `.mm-reveal--visible`) ───────── */
+
+.mm-reveal {
+  opacity: 0;
+  transform: translateY(var(--mm-reveal-distance));
+  transform-origin: 50% 50%;
+}
+
+.mm-reveal--scale {
+  transform: translateY(var(--mm-reveal-distance)) scale(0.96);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mm-reveal--visible.mm-reveal {
+    animation: mm-fade-up var(--mm-duration-entrance) var(--mm-ease-out) both;
+    animation-delay: var(--mm-reveal-run-delay, 0ms);
+  }
+
+  .mm-reveal--visible.mm-reveal--scale {
+    animation-name: mm-scale-in;
+    animation-duration: var(--mm-duration-entrance);
+    animation-timing-function: var(--mm-ease-out);
+    animation-fill-mode: both;
+    animation-delay: var(--mm-reveal-run-delay, 0ms);
+  }
+}
+
+.mm-reveal.mm-reveal--delay-1 {
+  --mm-reveal-run-delay: var(--mm-reveal-stagger-step);
+}
+
+.mm-reveal.mm-reveal--delay-2 {
+  --mm-reveal-run-delay: calc(var(--mm-reveal-stagger-step) * 2);
+}
+
+.mm-reveal.mm-reveal--delay-3 {
+  --mm-reveal-run-delay: calc(var(--mm-reveal-stagger-step) * 3);
+}
+
+.mm-reveal.mm-reveal--delay-4 {
+  --mm-reveal-run-delay: calc(var(--mm-reveal-stagger-step) * 4);
+}
+
+/* ── Above-the-fold entrance (runs on paint, no observer) ──────── */
+
+.mm-reveal-on-load {
+  opacity: 0;
+  transform: translateY(var(--mm-reveal-distance));
+}
+
+.mm-reveal-on-load--fade-down {
+  transform: translateY(calc(-1 * var(--mm-reveal-distance)));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mm-reveal-on-load {
+    animation: mm-fade-up var(--mm-duration-entrance) var(--mm-ease-out) both;
+    animation-delay: var(--mm-reveal-load-delay, 0ms);
+  }
+
+  .mm-reveal-on-load--fade-down {
+    animation-name: mm-fade-down;
+  }
+}
+
+.mm-reveal-on-load--delay-1 {
+  --mm-reveal-load-delay: var(--mm-reveal-stagger-step);
+}
+
+.mm-reveal-on-load--delay-2 {
+  --mm-reveal-load-delay: calc(var(--mm-reveal-stagger-step) * 2);
+}
+
+.mm-reveal-on-load--delay-3 {
+  --mm-reveal-load-delay: calc(var(--mm-reveal-stagger-step) * 3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-reveal,
+  .mm-reveal.mm-reveal--scale {
+    opacity: 1;
+    transform: none;
+  }
+
+  .mm-reveal-on-load,
+  .mm-reveal-on-load--fade-down {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

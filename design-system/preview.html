@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morning Mode — Design System</title>
+    <link rel="stylesheet" href="components.css" />
+    <style>
+      body {
+        margin: 0;
+        background: var(--mm-bg);
+      }
+
+      .ds-page {
+        padding-block: var(--mm-space-12) var(--mm-space-20);
+      }
+
+      .ds-header {
+        text-align: center;
+        margin-bottom: var(--mm-space-16);
+      }
+
+      .ds-header p {
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+
+      .ds-section {
+        margin-bottom: var(--mm-space-16);
+      }
+
+      .ds-section-title {
+        margin-bottom: var(--mm-space-6);
+      }
+
+      .ds-grid {
+        display: grid;
+        gap: var(--mm-space-6);
+      }
+
+      .ds-grid--2 {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .ds-grid--colors {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: var(--mm-space-4);
+      }
+
+      .ds-swatch {
+        border-radius: var(--mm-radius-lg);
+        overflow: hidden;
+        box-shadow: var(--mm-shadow-sm);
+      }
+
+      .ds-swatch__color {
+        height: 5rem;
+      }
+
+      .ds-swatch__info {
+        background: var(--mm-surface);
+        padding: var(--mm-space-3);
+        font-size: var(--mm-text-xs);
+      }
+
+      .ds-swatch__name {
+        font-weight: 600;
+        color: var(--mm-text-primary);
+        display: block;
+      }
+
+      .ds-swatch__hex {
+        color: var(--mm-text-secondary);
+        font-family: var(--mm-font-mono);
+      }
+
+      .ds-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--mm-space-4);
+        align-items: center;
+      }
+
+      .ds-type-sample {
+        padding: var(--mm-space-4);
+        background: var(--mm-surface);
+        border-radius: var(--mm-radius-lg);
+        box-shadow: var(--mm-shadow-sm);
+      }
+
+      .ds-type-sample + .ds-type-sample {
+        margin-top: var(--mm-space-3);
+      }
+
+      .ds-type-meta {
+        font-size: var(--mm-text-xs);
+        color: var(--mm-text-secondary);
+        font-family: var(--mm-font-mono);
+        margin-top: var(--mm-space-2);
+      }
+
+      .ds-gradient-bar {
+        height: 4rem;
+        border-radius: var(--mm-radius-xl);
+        box-shadow: var(--mm-shadow-md);
+      }
+
+      .ds-icon-row {
+        display: flex;
+        gap: var(--mm-space-4);
+        flex-wrap: wrap;
+      }
+
+      .ds-icon-row svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      .ds-card-demo {
+        display: flex;
+        flex-direction: column;
+        gap: var(--mm-space-4);
+      }
+
+      .ds-card-demo__header {
+        display: flex;
+        align-items: center;
+        gap: var(--mm-space-4);
+      }
+
+      .ds-card-demo__gradient-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .ds-card-demo__gradient-content h3,
+      .ds-card-demo__gradient-content p {
+        color: var(--mm-text-inverse);
+        margin: 0;
+      }
+
+      .ds-card-demo__gradient-content p {
+        opacity: 0.85;
+        font-size: var(--mm-text-sm);
+        margin-top: var(--mm-space-2);
+      }
+
+      .ds-sun-icon {
+        width: 4rem;
+        height: 4rem;
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: var(--mm-radius-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ds-sun-icon svg {
+        width: 2rem;
+        height: 2rem;
+        color: white;
+      }
+
+      .ds-stat-row {
+        display: flex;
+        gap: var(--mm-space-8);
+        flex-wrap: wrap;
+      }
+
+      .ds-stat-item .mm-label {
+        display: block;
+        margin-bottom: var(--mm-space-1);
+      }
+
+      .ds-phone-row {
+        display: flex;
+        gap: var(--mm-space-8);
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .ds-footer {
+        text-align: center;
+        padding-top: var(--mm-space-12);
+        border-top: var(--mm-divider);
+        color: var(--mm-text-secondary);
+        font-size: var(--mm-text-sm);
+      }
+    </style>
+  </head>
+  <body class="mm-body">
+    <div class="ds-page mm-container">
+      <header class="ds-header">
+        <p class="mm-label mm-label--accent">Design System</p>
+        <h1 class="mm-display" style="margin: var(--mm-space-3) 0">Morning Mode</h1>
+        <p class="mm-text">
+          Visual language extracted from the iOS app. Open this file in a browser to
+          reference tokens and components while building the landing page.
+        </p>
+      </header>
+
+      <!-- Colors -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Core Colors</span>
+        </div>
+        <div class="ds-grid ds-grid--colors">
+          <div class="ds-swatch">
+            <div class="ds-swatch__color" style="background: var(--mm-bg)"></div>
+            <div class="ds-swatch__info">
+              <span class="ds-swatch__name">Background</span>
+              <span class="ds-swatch__hex">#F2F2F7</span>
+            </div>
+          </div>
+          <div class="ds-swatch">
+            <div class="ds-swatch__color" style="background: var(--mm-surface)"></div>
+            <div class="ds-swatch__info">
+              <span class="ds-swatch__name">Surface</span>
+              <span class="ds-swatch__hex">#FFFFFF</span>
+            </div>
+          </div>
+          <div class="ds-swatch">
+            <div class="ds-swatch__color" style="background: var(--mm-orange)"></div>
+            <div class="ds-swatch__info">
+              <span class="ds-swatch__name">Orange</span>
+              <span class="ds-swatch__hex">#FF6B4A</span>
+            </div>
+          </div>
+          <div class="ds-swatch">
+            <div class="ds-swatch__color" style="background: var(--mm-teal)"></div>
+            <div class="ds-swatch__info">
+              <span class="ds-swatch__name">Teal</span>
+              <span class="ds-swatch__hex">#00D1A0</span>
+            </div>
+          </div>
+          <div class="ds-swatch">
+            <div class="ds-swatch__color" style="background: var(--mm-purple)"></div>
+            <div class="ds-swatch__info">
+              <span class="ds-swatch__name">Purple</span>
+              <span class="ds-swatch__hex">#9181F4</span>
+            </div>
+          </div>
+          <div class="ds-swatch">
+            <div class="ds-swatch__color" style="background: var(--mm-blue)"></div>
+            <div class="ds-swatch__info">
+              <span class="ds-swatch__name">Blue</span>
+              <span class="ds-swatch__hex">#007AFF</span>
+            </div>
+          </div>
+          <div class="ds-swatch">
+            <div
+              class="ds-swatch__color"
+              style="background: var(--mm-text-primary)"
+            ></div>
+            <div class="ds-swatch__info">
+              <span class="ds-swatch__name">Text Primary</span>
+              <span class="ds-swatch__hex">#1A1A1B</span>
+            </div>
+          </div>
+          <div class="ds-swatch">
+            <div
+              class="ds-swatch__color"
+              style="background: var(--mm-text-secondary)"
+            ></div>
+            <div class="ds-swatch__info">
+              <span class="ds-swatch__name">Text Secondary</span>
+              <span class="ds-swatch__hex">#8E8E93</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gradients -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Gradients</span>
+        </div>
+        <div class="ds-grid ds-grid--2">
+          <div>
+            <div
+              class="ds-gradient-bar"
+              style="background: var(--mm-gradient-sunrise)"
+            ></div>
+            <p class="mm-text mm-text--sm" style="margin-top: var(--mm-space-2)">
+              Sunrise — hero cards, primary CTA
+            </p>
+          </div>
+          <div>
+            <div
+              class="ds-gradient-bar"
+              style="background: var(--mm-gradient-insights)"
+            ></div>
+            <p class="mm-text mm-text--sm" style="margin-top: var(--mm-space-2)">
+              Insights — stat card corner glow
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Typography</span>
+        </div>
+        <div class="ds-type-sample">
+          <p class="mm-display">Start your day with intention</p>
+          <p class="ds-type-meta">.mm-display · 36–60px · 700</p>
+        </div>
+        <div class="ds-type-sample">
+          <p class="mm-title">Routines</p>
+          <p class="ds-type-meta">.mm-title · 28px · 700</p>
+        </div>
+        <div class="ds-type-sample">
+          <p class="mm-heading">Perfect Morning</p>
+          <p class="ds-type-meta">.mm-heading · 18px · 600</p>
+        </div>
+        <div class="ds-type-sample">
+          <p class="mm-stat">7h 10m</p>
+          <p class="ds-type-meta">.mm-stat · 28–48px · 700</p>
+        </div>
+        <div class="ds-type-sample">
+          <p class="mm-label">Today's Progress</p>
+          <p class="ds-type-meta">.mm-label · 11px · 600 · uppercase</p>
+        </div>
+        <div class="ds-type-sample">
+          <p class="mm-text">
+            Build morning routines that actually stick. Track workouts, tasks, and
+            insights in one calm, focused app.
+          </p>
+          <p class="ds-type-meta">.mm-text · 16px · 400</p>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Buttons</span>
+        </div>
+        <div class="ds-row">
+          <button class="mm-btn mm-btn--cta">Download on the App Store</button>
+          <button class="mm-btn mm-btn--primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Complete Exercise
+          </button>
+          <button class="mm-btn mm-btn--secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            Add Task
+          </button>
+          <button class="mm-btn mm-btn--ghost">Cancel</button>
+        </div>
+        <div class="ds-row" style="margin-top: var(--mm-space-4)">
+          <button class="mm-preset">15</button>
+          <button class="mm-preset mm-preset--active">30</button>
+          <button class="mm-preset">45</button>
+          <button class="mm-preset">60</button>
+        </div>
+      </section>
+
+      <!-- Badges & Icons -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Badges & Icon Circles</span>
+        </div>
+        <div class="ds-row" style="margin-bottom: var(--mm-space-6)">
+          <span class="mm-badge mm-badge--orange">Quick Start</span>
+          <span class="mm-badge mm-badge--green">Active</span>
+          <span class="mm-badge mm-badge--required">Required</span>
+          <span class="mm-badge mm-badge--ai">AI Selected</span>
+          <span class="mm-glass-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            12:18 PM
+          </span>
+        </div>
+        <div class="ds-icon-row">
+          <div class="mm-icon-circle mm-icon-circle--routine mm-icon-circle--lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="mm-icon-circle mm-icon-circle--workout mm-icon-circle--lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11v11h-11z"/><path d="M6.5 6.5L3 3M17.5 17.5L21 21M17.5 6.5L21 3M6.5 17.5L3 21"/></svg>
+          </div>
+          <div class="mm-icon-circle mm-icon-circle--task mm-icon-circle--lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <div class="mm-icon-circle mm-icon-circle--insight mm-icon-circle--lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Cards</span>
+        </div>
+        <div class="ds-grid ds-grid--2">
+          <div class="mm-card ds-card-demo">
+            <div class="ds-card-demo__header">
+              <div class="mm-icon-circle mm-icon-circle--routine">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg>
+              </div>
+              <div>
+                <p class="mm-heading" style="margin: 0">Morning Routine</p>
+                <p class="mm-text mm-text--sm" style="margin: var(--mm-space-1) 0 0">3 tasks · 5 min</p>
+              </div>
+            </div>
+            <div class="mm-progress">
+              <div class="mm-progress__fill mm-progress__fill--routine" style="width: 33%"></div>
+            </div>
+            <a href="#" class="mm-link">Tap to preview ›</a>
+          </div>
+
+          <div class="mm-card mm-card--gradient">
+            <div class="ds-card-demo__gradient-content">
+              <div>
+                <span class="mm-badge" style="background: rgba(255,255,255,0.25); color: white">Quick Start</span>
+                <h3 class="mm-heading" style="margin-top: var(--mm-space-3); font-size: var(--mm-text-xl)">Perfect Morning</h3>
+                <p>Start your day with energy and focus</p>
+              </div>
+              <div class="ds-sun-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2"/><circle cx="12" cy="12" r="4"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="mm-card mm-card--insights">
+            <p class="mm-label mm-label--accent">Time Reclaimed</p>
+            <p class="mm-stat" style="margin: var(--mm-space-2) 0">7h 10m</p>
+            <p class="mm-text mm-text--sm">saved this month by staying on track</p>
+            <div class="ds-stat-row" style="margin-top: var(--mm-space-6)">
+              <div class="ds-stat-item">
+                <span class="mm-label">This Week</span>
+                <span class="mm-stat mm-stat--sm">1h 45m</span>
+              </div>
+              <div class="ds-stat-item">
+                <span class="mm-label">This Month</span>
+                <span class="mm-stat mm-stat--sm">7h 10m</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mm-card mm-card--warm">
+            <span class="mm-badge mm-badge--green">In Session</span>
+            <p class="mm-heading" style="margin: var(--mm-space-3) 0 var(--mm-space-2)">Complete tasks to unlock</p>
+            <p class="mm-text mm-text--sm">Current step</p>
+            <div class="mm-list-row" style="background: var(--mm-orange-soft); border-radius: var(--mm-radius-lg); padding: var(--mm-space-3) var(--mm-space-4); margin-top: var(--mm-space-3)">
+              <div class="mm-icon-circle mm-icon-circle--routine" style="width: 2rem; height: 2rem">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/></svg>
+              </div>
+              <span class="mm-heading" style="font-size: var(--mm-text-base)">Drink water</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Progress Ring -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Progress Ring</span>
+        </div>
+        <div class="mm-ring" style="width: 120px; height: 120px">
+          <svg width="120" height="120" viewBox="0 0 120 120">
+            <circle class="mm-ring__track" cx="60" cy="60" r="52" />
+            <circle
+              class="mm-ring__fill"
+              cx="60"
+              cy="60"
+              r="52"
+              stroke-dasharray="326.7"
+              stroke-dashoffset="196"
+            />
+          </svg>
+          <span class="mm-ring__label">2<span style="font-size: var(--mm-text-sm); color: var(--mm-text-secondary)"> of 5</span></span>
+        </div>
+      </section>
+
+      <!-- Tab Bar -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Navigation</span>
+        </div>
+        <nav class="mm-tab-bar" aria-label="App navigation reference">
+          <a href="#" class="mm-tab mm-tab--active">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            Dashboard
+          </a>
+          <a href="#" class="mm-tab">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            Insights
+          </a>
+          <a href="#" class="mm-tab">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            Routines
+          </a>
+          <a href="#" class="mm-tab">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Settings
+          </a>
+        </nav>
+      </section>
+
+      <!-- Spacing & Radius reference -->
+      <section class="ds-section">
+        <div class="ds-section-title mm-section-header">
+          <span class="mm-label">Spacing & Radius</span>
+        </div>
+        <div class="ds-grid ds-grid--2">
+          <div class="mm-card">
+            <p class="mm-heading">Border Radius</p>
+            <div class="ds-row" style="margin-top: var(--mm-space-4)">
+              <div style="width: 3rem; height: 3rem; background: var(--mm-teal-soft); border-radius: var(--mm-radius-md)"></div>
+              <div style="width: 3rem; height: 3rem; background: var(--mm-teal-soft); border-radius: var(--mm-radius-lg)"></div>
+              <div style="width: 3rem; height: 3rem; background: var(--mm-teal-soft); border-radius: var(--mm-radius-xl)"></div>
+              <div style="width: 3rem; height: 3rem; background: var(--mm-teal-soft); border-radius: var(--mm-radius-2xl)"></div>
+              <div style="width: 3rem; height: 3rem; background: var(--mm-teal-soft); border-radius: var(--mm-radius-full)"></div>
+            </div>
+            <p class="mm-text mm-text--sm" style="margin-top: var(--mm-space-3)">md · lg · xl · 2xl · full</p>
+          </div>
+          <div class="mm-card">
+            <p class="mm-heading">Shadows</p>
+            <div class="ds-row" style="margin-top: var(--mm-space-4)">
+              <div style="width: 4rem; height: 4rem; background: white; border-radius: var(--mm-radius-lg); box-shadow: var(--mm-shadow-sm)"></div>
+              <div style="width: 4rem; height: 4rem; background: white; border-radius: var(--mm-radius-lg); box-shadow: var(--mm-shadow-md)"></div>
+              <div style="width: 4rem; height: 4rem; background: white; border-radius: var(--mm-radius-lg); box-shadow: var(--mm-shadow-lg)"></div>
+              <div style="width: 4rem; height: 4rem; background: white; border-radius: var(--mm-radius-lg); box-shadow: var(--mm-shadow-xl)"></div>
+            </div>
+            <p class="mm-text mm-text--sm" style="margin-top: var(--mm-space-3)">sm · md · lg · xl</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="ds-footer">
+        <p>Morning Mode Design System · See DESIGN_SYSTEM.md for full documentation</p>
+      </footer>
+    </div>
+  </body>
+</html>

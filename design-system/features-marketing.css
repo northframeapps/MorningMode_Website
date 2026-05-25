@@ -1,0 +1,191 @@
+/**
+ * Features marketing — headline + showcase shell + four snippet cards
+ */
+
+.features-marketing {
+  background: var(--mm-bg);
+  overflow-x: clip;
+  padding-block: var(--mm-space-16);
+  scroll-margin-top: calc(var(--mm-space-8) + var(--mm-space-2));
+}
+
+.features-marketing__intro {
+  text-align: center;
+  padding-block-end: var(--mm-space-10);
+}
+
+.features-marketing__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 var(--mm-space-5);
+  padding: var(--mm-space-2) var(--mm-space-4);
+  border-radius: var(--mm-radius-full);
+  background: var(--mm-surface-muted);
+}
+
+.features-marketing__title {
+  margin: 0 0 var(--mm-space-5);
+  text-wrap: balance;
+}
+
+.features-marketing__lede {
+  margin: 0 auto;
+  max-width: var(--mm-container-md);
+}
+
+.features-marketing__shell-wrap {
+  max-width: min(var(--mm-container-page), 100%);
+  margin-inline: auto;
+}
+
+.features-marketing__shell {
+  position: relative;
+  padding: var(--mm-space-8) var(--mm-space-6);
+  border-radius: var(--mm-radius-2xl);
+  background: var(--mm-surface);
+  border: var(--mm-border);
+  box-shadow: var(--mm-shadow-lg);
+  overflow: hidden;
+}
+
+.features-marketing__shell-highlight {
+  position: absolute;
+  inset-inline: var(--mm-space-10);
+  inset-block-start: var(--mm-space-8);
+  height: 38%;
+  border-radius: var(--mm-radius-xl);
+  background: var(--mm-gradient-sunrise-soft);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.features-marketing__grid {
+  position: relative;
+  z-index: var(--mm-z-base);
+  display: grid;
+  gap: var(--mm-space-8);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 768px) {
+  .features-marketing__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mm-space-8) var(--mm-space-6);
+  }
+}
+
+.features-marketing__snippet {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: var(--mm-radius-xl);
+  background: var(--mm-bg-elevated);
+  border: var(--mm-border);
+  box-shadow: var(--mm-shadow-card);
+  overflow: clip;
+  transition:
+    transform var(--mm-duration-normal) var(--mm-ease-out),
+    box-shadow var(--mm-duration-normal) var(--mm-ease-out);
+}
+
+.features-marketing__snippet-visual {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  background: var(--mm-bg);
+}
+
+.features-marketing__snippet-img {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/**
+ * Routine creation uses a taller phone screenshot; contain + inset keeps edges visible
+ * inside the shared 16/10 snippet frame instead of cropping with cover.
+ */
+.features-marketing__snippet--routine-builder .features-marketing__snippet-visual {
+  padding-inline: var(--mm-space-10);
+  padding-block: var(--mm-space-6);
+}
+
+.features-marketing__snippet--routine-builder .features-marketing__snippet-img {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Insights: portrait asset in the shared 16:10 snippet — contain keeps the whole card readable;
+   scale() reliably shrinks the bitmap (padding alone fights next/image fill + absolute inset). */
+.features-marketing__snippet--insights .features-marketing__snippet-img {
+  object-fit: contain;
+  object-position: center;
+  transform: scale(0.93);
+  transform-origin: center center;
+}
+
+.features-marketing__snippet-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--mm-space-4);
+  padding: var(--mm-space-5) var(--mm-space-5) var(--mm-space-6);
+}
+
+@media (min-width: 480px) {
+  .features-marketing__snippet-body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--mm-space-5);
+  }
+}
+
+.features-marketing__snippet-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--mm-radius-lg);
+}
+
+.features-marketing__snippet--routines .features-marketing__snippet-icon {
+  background: var(--mm-category-task-bg);
+  color: var(--mm-category-task);
+}
+
+.features-marketing__snippet--workout .features-marketing__snippet-icon {
+  background: var(--mm-category-workout-bg);
+  color: var(--mm-category-workout);
+}
+
+.features-marketing__snippet--routine-builder .features-marketing__snippet-icon {
+  background: var(--mm-category-routine-bg);
+  color: var(--mm-category-routine);
+}
+
+.features-marketing__snippet--insights .features-marketing__snippet-icon {
+  background: var(--mm-category-insight-bg);
+  color: var(--mm-category-insight);
+}
+
+.features-marketing__snippet-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.features-marketing__snippet-title {
+  margin: 0 0 var(--mm-space-3);
+}
+
+.features-marketing__snippet-text {
+  margin: 0;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .features-marketing__snippet:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--mm-shadow-float);
+  }
+}

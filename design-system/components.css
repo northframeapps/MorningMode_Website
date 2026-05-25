@@ -1,0 +1,454 @@
+/**
+ * Morning Mode — Components
+ */
+
+@import "./tokens.css";
+@import "./typography.css";
+
+/* ── Reset helpers ─────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ── Card ──────────────────────────────────────────────────── */
+
+.mm-card {
+  background: var(--mm-surface);
+  border-radius: var(--mm-radius-xl);
+  box-shadow: var(--mm-shadow-card);
+  padding: var(--mm-space-6);
+}
+
+.mm-card--warm {
+  background: var(--mm-gradient-card-warm);
+}
+
+.mm-card--gradient {
+  background: var(--mm-gradient-sunrise);
+  color: var(--mm-text-inverse);
+  box-shadow: var(--mm-shadow-lg);
+}
+
+.mm-card--insights {
+  background: var(--mm-surface);
+  background-image: var(--mm-gradient-insights);
+  background-repeat: no-repeat;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+
+.mm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mm-space-2);
+  font-family: var(--mm-font-sans);
+  font-size: var(--mm-text-base);
+  font-weight: 600;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform var(--mm-duration-fast) var(--mm-ease-out),
+    box-shadow var(--mm-duration-fast) var(--mm-ease-out),
+    opacity var(--mm-duration-fast) var(--mm-ease-out),
+    background-color var(--mm-duration-fast) var(--mm-ease-out);
+}
+
+.mm-btn:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.mm-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.mm-btn--primary {
+  background: var(--mm-teal);
+  color: var(--mm-text-inverse);
+  padding: var(--mm-space-4) var(--mm-space-8);
+  border-radius: var(--mm-radius-lg);
+  box-shadow: var(--mm-shadow-btn-teal-base);
+}
+
+.mm-btn--cta {
+  background: var(--mm-gradient-sunrise);
+  color: var(--mm-text-inverse);
+  padding: var(--mm-space-4) var(--mm-space-8);
+  border-radius: var(--mm-radius-lg);
+  box-shadow: var(--mm-shadow-btn-sunrise-base);
+}
+
+.mm-btn--secondary {
+  background: var(--mm-orange-soft);
+  color: var(--mm-orange);
+  padding: var(--mm-space-3) var(--mm-space-6);
+  border-radius: var(--mm-radius-full);
+}
+
+.mm-btn--ghost {
+  background: var(--mm-surface);
+  color: var(--mm-text-primary);
+  padding: var(--mm-space-3) var(--mm-space-5);
+  border-radius: var(--mm-radius-md);
+  box-shadow: var(--mm-shadow-sm);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mm-btn--primary:hover:not(:disabled) {
+    box-shadow: var(--mm-shadow-btn-teal-hover);
+  }
+
+  .mm-btn--cta:hover:not(:disabled) {
+    box-shadow: var(--mm-shadow-btn-sunrise-hover);
+  }
+
+  .mm-btn--secondary:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--mm-orange-soft) 82%, var(--mm-orange));
+  }
+
+  .mm-btn--ghost:hover:not(:disabled) {
+    box-shadow: var(--mm-shadow-md);
+  }
+}
+
+.mm-btn--pill {
+  border-radius: var(--mm-radius-full);
+}
+
+/* Preset value buttons (15, 30, 45, 60) */
+.mm-preset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  height: 2.5rem;
+  padding: 0 var(--mm-space-3);
+  font-family: var(--mm-font-sans);
+  font-size: var(--mm-text-sm);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--mm-radius-md);
+  background: var(--mm-control-track);
+  color: var(--mm-text-primary);
+  cursor: pointer;
+  transition: background var(--mm-duration-fast) var(--mm-ease-out);
+}
+
+.mm-preset--active,
+.mm-preset.is-active {
+  background: var(--mm-teal);
+  color: var(--mm-text-inverse);
+}
+
+/* ── Badges ────────────────────────────────────────────────── */
+
+.mm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mm-space-1);
+  padding: var(--mm-space-1) var(--mm-space-3);
+  font-size: var(--mm-text-xs);
+  font-weight: 600;
+  border-radius: var(--mm-radius-full);
+  line-height: 1.4;
+}
+
+.mm-badge--orange {
+  background: var(--mm-orange-soft);
+  color: var(--mm-orange);
+}
+
+.mm-badge--green {
+  background: var(--mm-green-soft);
+  color: var(--mm-green-text);
+}
+
+.mm-badge--required {
+  background: var(--mm-required-bg);
+  color: var(--mm-required-text);
+}
+
+.mm-badge--ai {
+  background: var(--mm-purple-soft);
+  color: var(--mm-purple);
+}
+
+/* ── Icon circle ───────────────────────────────────────────── */
+
+.mm-icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--mm-radius-full);
+  flex-shrink: 0;
+}
+
+.mm-icon-circle--routine {
+  background: var(--mm-category-routine-bg);
+  color: var(--mm-category-routine);
+}
+
+.mm-icon-circle--workout {
+  background: var(--mm-category-workout-bg);
+  color: var(--mm-category-workout);
+}
+
+.mm-icon-circle--task {
+  background: var(--mm-category-task-bg);
+  color: var(--mm-category-task);
+}
+
+.mm-icon-circle--insight {
+  background: var(--mm-category-insight-bg);
+  color: var(--mm-category-insight);
+}
+
+.mm-icon-circle--lg {
+  width: 4rem;
+  height: 4rem;
+}
+
+.mm-icon-circle--xl {
+  width: 5rem;
+  height: 5rem;
+}
+
+/* ── Progress bar ────────────────────────────────────────────── */
+
+.mm-progress {
+  height: 6px;
+  background: var(--mm-control-track);
+  border-radius: var(--mm-radius-full);
+  overflow: hidden;
+}
+
+.mm-progress__fill {
+  height: 100%;
+  border-radius: var(--mm-radius-full);
+  transition: width var(--mm-duration-slow) var(--mm-ease-out);
+}
+
+.mm-progress__fill--routine {
+  background: var(--mm-orange);
+}
+.mm-progress__fill--workout {
+  background: var(--mm-teal);
+}
+.mm-progress__fill--task {
+  background: var(--mm-purple);
+}
+
+/* ── Progress ring ───────────────────────────────────────────── */
+
+.mm-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mm-ring svg {
+  transform: rotate(-90deg);
+}
+
+.mm-ring__track {
+  fill: none;
+  stroke: var(--mm-teal-soft);
+  stroke-width: 8;
+}
+
+.mm-ring__fill {
+  fill: none;
+  stroke: var(--mm-teal);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--mm-duration-slow) var(--mm-ease-out);
+}
+
+.mm-ring__label {
+  position: absolute;
+  font-size: var(--mm-text-2xl);
+  font-weight: 700;
+  color: var(--mm-text-primary);
+}
+
+/* ── Glass pill (time/weather chip) ─────────────────────────── */
+
+.mm-glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mm-space-2);
+  padding: var(--mm-space-2) var(--mm-space-4);
+  background: var(--mm-overlay);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--mm-radius-full);
+  font-size: var(--mm-text-sm);
+  font-weight: 500;
+  color: var(--mm-text-primary);
+  box-shadow: var(--mm-shadow-xs);
+}
+
+/* ── List row (routine/task item) ────────────────────────────── */
+
+.mm-list-row {
+  display: flex;
+  align-items: center;
+  gap: var(--mm-space-4);
+  padding: var(--mm-space-4) 0;
+}
+
+.mm-list-row + .mm-list-row {
+  border-top: var(--mm-divider);
+}
+
+.mm-list-row__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mm-list-row__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--mm-space-3);
+  font-size: var(--mm-text-xs);
+  color: var(--mm-text-secondary);
+  margin-top: var(--mm-space-1);
+}
+
+/* ── Nav tab bar (for reference / footer) ──────────────────── */
+
+.mm-tab-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mm-space-1);
+  padding: var(--mm-space-2);
+  background: var(--mm-surface);
+  border-radius: var(--mm-radius-full);
+  box-shadow: var(--mm-shadow-float);
+}
+
+.mm-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--mm-space-1);
+  padding: var(--mm-space-2) var(--mm-space-4);
+  font-size: var(--mm-text-xs);
+  font-weight: 500;
+  color: var(--mm-text-secondary);
+  border-radius: var(--mm-radius-full);
+  text-decoration: none;
+  transition: background var(--mm-duration-fast) var(--mm-ease-out);
+}
+
+.mm-tab--active {
+  background: var(--mm-bg);
+  color: var(--mm-blue);
+}
+
+/* ── Phone mockup frame ──────────────────────────────────────── */
+
+.mm-phone-shell {
+  position: relative;
+  isolation: isolate;
+  width: min(280px, 100%);
+}
+
+.mm-phone-shell__side {
+  position: absolute;
+  z-index: 0;
+  background: var(--mm-phone-hardware-face);
+}
+
+/* Left: action + volume ribs (three controls like retail / press assets) */
+
+.mm-phone-shell__side--action {
+  width: var(--mm-phone-hardware-depth-power);
+  top: 12.75%;
+  height: 4.25%;
+  left: calc(-1 * var(--mm-phone-hardware-depth-power));
+  border-radius: var(--mm-radius-full) var(--mm-radius-sm) var(--mm-radius-sm)
+    var(--mm-radius-full);
+  box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.36),
+    inset -1px 0 1px rgba(0, 0, 0, 0.24), var(--mm-shadow-xs);
+}
+
+.mm-phone-shell__side--vol-up,
+.mm-phone-shell__side--vol-down {
+  width: var(--mm-phone-hardware-depth);
+}
+
+.mm-phone-shell__side--vol-up {
+  top: 20%;
+  height: 7.25%;
+  left: calc(-1 * var(--mm-phone-hardware-depth));
+  border-radius: var(--mm-radius-full) var(--mm-radius-sm) var(--mm-radius-sm)
+    var(--mm-radius-full);
+  box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.38),
+    inset -1px 0 1px rgba(0, 0, 0, 0.26), var(--mm-shadow-xs);
+}
+
+.mm-phone-shell__side--vol-down {
+  top: 29%;
+  height: 7.25%;
+  left: calc(-1 * var(--mm-phone-hardware-depth));
+  border-radius: var(--mm-radius-full) var(--mm-radius-sm) var(--mm-radius-sm)
+    var(--mm-radius-full);
+  box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.38),
+    inset -1px 0 1px rgba(0, 0, 0, 0.26), var(--mm-shadow-xs);
+}
+
+/* Right: side / power — long rib opposite volume stack */
+
+.mm-phone-shell__side--power {
+  top: 20.5%;
+  width: var(--mm-phone-hardware-depth-power);
+  height: 13.5%;
+  right: calc(-1 * var(--mm-phone-hardware-depth-power));
+  border-radius: var(--mm-radius-sm) var(--mm-radius-full) var(--mm-radius-full)
+    var(--mm-radius-sm);
+  box-shadow: inset -2px 0 0 rgba(255, 255, 255, 0.34),
+    inset 1px 0 1px rgba(0, 0, 0, 0.22), var(--mm-shadow-xs);
+}
+
+.mm-phone {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: var(--mm-phone-aspect);
+  border: var(--mm-phone-metal-band) solid var(--mm-phone-frame);
+  background: var(--mm-phone-display-bezel);
+  border-radius: var(--mm-phone-radius);
+  padding: var(--mm-phone-bezel);
+  box-shadow: var(--mm-phone-shadow);
+  overflow: hidden;
+}
+
+.mm-phone__screen {
+  border-radius: calc(
+    var(--mm-phone-radius) - var(--mm-phone-metal-band) - var(--mm-phone-bezel)
+  );
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* ── Container ───────────────────────────────────────────────── */
+
+.mm-container {
+  width: 100%;
+  max-width: var(--mm-container-page);
+  margin-inline: auto;
+  padding-inline-start: max(var(--mm-page-gutter-x), env(safe-area-inset-left, 0px));
+  padding-inline-end: max(var(--mm-page-gutter-x), env(safe-area-inset-right, 0px));
+}

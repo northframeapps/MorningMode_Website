@@ -1,0 +1,112 @@
+/**
+ * Morning Mode — Typography
+ */
+
+.mm-body {
+  font-family: var(--mm-font-sans);
+  font-size: var(--mm-text-base);
+  line-height: var(--mm-leading-normal);
+  color: var(--mm-text-primary);
+  background-color: var(--mm-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--mm-blue) 28%, transparent);
+}
+
+/* Display — hero headlines */
+.mm-display {
+  font-size: clamp(var(--mm-text-3xl), 5vw, var(--mm-text-5xl));
+  font-weight: 700;
+  line-height: var(--mm-leading-tight);
+  letter-spacing: var(--mm-tracking-tight);
+  color: var(--mm-text-primary);
+}
+
+/* Page title — "Insights", "Routines" */
+.mm-title {
+  font-size: var(--mm-text-2xl);
+  font-weight: 700;
+  line-height: var(--mm-leading-tight);
+  letter-spacing: var(--mm-tracking-tight);
+  color: var(--mm-text-primary);
+}
+
+/* Card / feature title */
+.mm-heading {
+  font-size: var(--mm-text-lg);
+  font-weight: 600;
+  line-height: var(--mm-leading-snug);
+  color: var(--mm-text-primary);
+}
+
+/* Section label — "TODAY'S PROGRESS", "STREAKS" */
+.mm-label {
+  font-size: var(--mm-text-xs);
+  font-weight: 600;
+  line-height: var(--mm-leading-normal);
+  letter-spacing: var(--mm-tracking-wider);
+  text-transform: uppercase;
+  color: var(--mm-text-secondary);
+}
+
+.mm-label--accent {
+  color: var(--mm-orange);
+}
+
+/* Body copy */
+.mm-text {
+  font-size: var(--mm-text-base);
+  font-weight: 400;
+  line-height: var(--mm-leading-relaxed);
+  color: var(--mm-text-secondary);
+}
+
+.mm-text--sm {
+  font-size: var(--mm-text-sm);
+}
+
+/* Stat / metric numbers — "7h 10m", "0 / 3" */
+.mm-stat {
+  font-size: clamp(var(--mm-text-2xl), 4vw, var(--mm-text-4xl));
+  font-weight: 700;
+  line-height: var(--mm-leading-tight);
+  letter-spacing: var(--mm-tracking-tight);
+  color: var(--mm-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.mm-stat--sm {
+  font-size: var(--mm-text-xl);
+}
+
+/* Link text — "Tap to preview" */
+.mm-link {
+  font-size: var(--mm-text-sm);
+  font-weight: 500;
+  color: var(--mm-text-link);
+  text-decoration: none;
+  transition: opacity var(--mm-duration-fast) var(--mm-ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mm-link:hover {
+    opacity: 0.75;
+  }
+}
+
+/* Section marker — orange dash before labels */
+.mm-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--mm-space-2);
+}
+
+.mm-section-header::before {
+  content: "";
+  display: block;
+  width: 1.25rem;
+  height: 3px;
+  border-radius: var(--mm-radius-full);
+  background: var(--mm-orange);
+  flex-shrink: 0;
+}
