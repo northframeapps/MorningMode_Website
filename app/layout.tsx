@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 
 import { SiteFooter } from "@/components/footer/SiteFooter";
 
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
   title: "Morning Mode — Own your morning — earn your phone",
   description:
     "Build routines, track workouts, and reclaim your time before the day gets away.",
+  icons: {
+    icon: "/logo.jpeg",
+    apple: "/logo.jpeg",
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +32,7 @@ export default function RootLayout({
         </a>
         {children}
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

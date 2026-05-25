@@ -1,3 +1,5 @@
+export const TESTFLIGHT_JOIN_URL = "https://testflight.apple.com/join/jYJCbJ47";
+
 export type FooterNavLink = {
   label: string;
   href: string;
@@ -21,7 +23,7 @@ export const footerNavColumns: FooterNavColumn[] = [
     heading: "Explore",
     links: [
       { label: "Spotlight", href: "#feature-spotlight" },
-      { label: "Join waitlist", href: "#hero-waitlist" },
+      { label: "Join waitlist", href: TESTFLIGHT_JOIN_URL },
     ],
   },
   {

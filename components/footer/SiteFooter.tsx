@@ -13,6 +13,26 @@ function isSocialReady(link: FooterSocialLink): link is FooterSocialLink & { hre
   return typeof link.href === "string" && link.href.length > 0;
 }
 
+function isExternalHref(href: string): boolean {
+  return href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:");
+}
+
+function FooterNavAnchor({ href, className, children }: { href: string; className: string; children: React.ReactNode }) {
+  if (isExternalHref(href)) {
+    return (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  );
+}
+
 function InstagramGlyph() {
   return (
     <svg
@@ -137,9 +157,9 @@ export function SiteFooter() {
             <ul className="site-footer__link-list">
               {column.links.map((link) => (
                 <li key={`${column.id}-${link.label}`}>
-                  <Link href={link.href} className="site-footer__link">
+                  <FooterNavAnchor href={link.href} className="site-footer__link">
                     {link.label}
-                  </Link>
+                  </FooterNavAnchor>
                 </li>
               ))}
             </ul>
