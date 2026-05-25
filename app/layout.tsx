@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 
 import { SiteFooter } from "@/components/footer/SiteFooter";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         </a>
         {children}
         <SiteFooter />
+        <SpeedInsights />
       </body>
     </html>
   );
