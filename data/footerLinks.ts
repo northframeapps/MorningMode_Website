@@ -16,14 +16,14 @@ export const footerNavColumns: FooterNavColumn[] = [
   {
     id: "product",
     heading: "Product",
-    links: [{ label: "Features", href: "#features" }],
+    links: [{ label: "Features", href: "/#features" }],
   },
   {
     id: "explore",
     heading: "Explore",
     links: [
-      { label: "Spotlight", href: "#feature-spotlight" },
-      { label: "Join waitlist", href: TESTFLIGHT_JOIN_URL },
+      { label: "Spotlight", href: "/#feature-spotlight" },
+      { label: "Join waitlist", href: "/#hero-waitlist" },
     ],
   },
   {
@@ -34,6 +34,14 @@ export const footerNavColumns: FooterNavColumn[] = [
         label: "Contact",
         href: "mailto:hello@morningmode.app",
       },
+    ],
+  },
+  {
+    id: "legal",
+    heading: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
     ],
   },
 ];

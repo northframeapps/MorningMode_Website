@@ -678,6 +678,34 @@
   outline: none;
 }
 
+.hero-waitlist__input--prompt {
+  border-color: color-mix(in srgb, var(--mm-amber) 65%, var(--mm-teal));
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--mm-teal) 28%, transparent),
+    0 0 0 6px color-mix(in srgb, var(--mm-amber) 22%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-waitlist__input--prompt {
+    animation: hero-waitlist-input-prompt 0.9s var(--mm-ease-out) 2;
+  }
+}
+
+@keyframes hero-waitlist-input-prompt {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px color-mix(in srgb, var(--mm-teal) 28%, transparent),
+      0 0 0 6px color-mix(in srgb, var(--mm-amber) 22%, transparent);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 4px color-mix(in srgb, var(--mm-teal) 40%, transparent),
+      0 0 0 10px color-mix(in srgb, var(--mm-amber) 35%, transparent);
+  }
+}
+
 .hero-waitlist__submit {
   min-height: 3rem;
   padding-inline: var(--mm-space-6);
